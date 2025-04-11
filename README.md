@@ -1,14 +1,40 @@
-# Project
+# DefenderBench
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+## Installation
 
-As the maintainer of this project, please make a few updates:
+First create a virtual environment and activate it:
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+    conda create -n defenderbench python=3.10
+    conda activate defenderbench
+
+Then install the benchmark:
+
+        pip install .
+
+
+## Usage
+
+To run the benchmark, use the following script:
+
+    python -m src.examples.run_experiment
+
+For instance, to run the random baseline on all the environments/tasks
+
+    python -m src.examples.run_experiment --llm random
+
+To manually run a specific environment/task
+
+    python -m src.examples.run_experiment --llm human --env_name CyberBattleChain10
+
+To list all the available environments/tasks and additional settings use:
+
+    python -m src.examples.run_experiment --help
+
+## Usage using a custom agent
+
+Here's a simple example of an actor-critic multi-agent architecture
+
+    python agents/actor_critic.py
 
 ## Contributing
 
@@ -26,8 +52,8 @@ contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additio
 
 ## Trademarks
 
-This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft 
-trademarks or logos is subject to and must follow 
+This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft
+trademarks or logos is subject to and must follow
 [Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general).
 Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft sponsorship.
 Any use of third-party trademarks or logos are subject to those third-party's policies.
