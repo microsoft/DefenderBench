@@ -1,0 +1,4 @@
+gpt-4o:
+  endpoint: "https://{your-deployment}.openai.azure.com/"
+  api_version: "2024-02-15-preview"
+  bearer_token: true
