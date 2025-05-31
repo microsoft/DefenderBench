@@ -100,10 +100,47 @@ Here's a simple example of an actor-critic multi-agent architecture
 ## Experiment Results
 we use a variety of LLMs as the backbone of our agent. These include (1) open-weight models (Llama 3.1 (Dubey et al., 2024), Llama 3.2, Llama 3.3, and Phi-3.5 (Abdin et al., 2024)), (2) proprietary models (GPT-3.5, GPT-4-turbo, GPT-4o, GPT-4o-mini, Claude-3.5-haiku, and Claude-3.5-sonnet, Claude-3.7-sonnet), and (3) proprietary reasoning models (o1, o1-mini, o3, o4-mini, GPT-4.1, GPT-4.1-mini, and GPT-4.1-nano, Claude-3.7-sonnet-think).
 
+| Model | CyberBattleSim-Chain | CyberBattleSim-CTF | Malicious Text | Malicious Web | CTI-MCQA | Vulnerabilit-CG | Vulnerabilit-DV | CVEfix | DefenderBench score|
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+|     | winning % | winning % | Macro-F1 | Macro-F1  | Macro-F1 | Macro-F1  | Macro-F1  | CodeBLEU | DefenderBench score|
+| Naive Baseline | 19.44 | 22.22 | 52.40 | 50.40 | 25.00 | 50.00 | 47.80 | **83.24** | 43.81 |
+| Llama 3.1 8B | 23.61 | 16.67 | 88.00 | 77.20 | 60.60 | 49.60 | 48.60 | 73.63 | 54.74 |
+| Llama 3.1 70B | 77.78 | 44.44 | **96.80** | 83.00 | 69.80 | 50.60 | 51.40 | 75.88 | 68.71 |
+| Llama 3.2 1B | 8.33 | 16.67 | 42.00 | 30.00 | 50.60 | 48.60 | 43.80 | 66.69 | 38.34 |
+| Llama 3.2 3B | 9.72 | 16.67 | 83.40 | 67.00 | 58.40 | 46.60 | 46.40 | 73.23 | 50.18 |
+| Llama 3.3 70B | **100.00** | 33.33 | 96.00 | 82.80 | 69.60 | 58.00 | 57.40 | 77.31 | 71.81 |
+| Phi-3.5-mini (4B) | 8.33 | 16.67 | 87.00 | 66.80 | 71.00 | 45.00 | 44.20 | 71.97 | 51.37 |
+| GPT-3.5 | 16.67 | 16.67 | 94.20 | 85.80 | 61.20 | 48.00 | 47.00 | 54.34 | 52.99 |
+| GPT-4-turbo | 90.00 | 46.67 | 93.40 | 83.20 | 73.80 | **58.20** | 57.60 | 73.72 | 72.07 |
+| GPT-4o | 62.50 | 50.00 | 93.60 | 90.00 | 72.00 | 55.00 | 55.20 | 77.88 | 69.52 |
+| GPT-4o-mini | 22.22 | 19.44 | 91.40 | 88.80 | 67.80 | 47.60 | 47.00 | 79.71 | 58.00 |
+| GPT-4.1 | 66.67 | 66.70 | 89.40 | 89.80 | 73.60 | 19.40 | 50.60 | 54.80 | 63.90 |
+| GPT-4.1-mini | 50.00 | 50.00 | 90.60 | 89.20 | 73.60 | 19.80 | 45.00 | 52.80 | 58.90 |
+| GPT-4.1-nano | 16.67 | 16.67 | 87.00 | 73.80 | 63.60 | 30.00 | 43.80 | 48.80 | 47.50 |
+| Claude-3.5-haiku | 45.00 | 40.00 | 82.70 | 84.80 | 67.60 | 55.20 | 56.40 | 70.64 | 62.79 |
+| Claude-3.5-sonnet | **100.00** | 56.67 | 93.80 | 88.20 | 72.40 | 56.40 | 56.80 | 75.74 | 75.00 |
+| Claude-3.7-sonnet | **100.00** | **100.00** | 96.20 | 90.00 | 74.20 | 56.60 | 56.00 | 80.18 | **81.65** |
+| o1-preview | 16.67 | 16.60 | 82.50 | 88.70 | 77.40 | 56.40 | 51.40 | 50.10 | 59.70 |
+| o1-mini | 50.00 | 50.00 | 80.30 | 74.40 | 37.40 | 49.60 | 48.60 | 53.70 | 60.30 |
+| o3 | 83.30 | 20.00 | 92.40 | 88.00 | 76.40 | 30.80 | **59.60** | 55.60 | 63.90 |
+| o4-mini | 66.70 | 20.00 | 92.00 | 84.60 | 70.00 | 32.20 | 57.40 | 52.40 | 50.80 |
+| Claude-3.7-sonnet-tk | **100.00** | 76.67 | 94.40 | **91.00** | **78.20** | 54.60 | 52.80 | 79.50 | 78.40 |
+
+
+**Overall Perforamce** Claude-3.7-sonnet achieves the highest DefenderBench score of 81.65 across
+all tasks. Among the open-weight models, the Llama 3.3 70B model attains the highest score of
+71.81, outperforming GPT-3.5, which records a score of 52.99. Among the reasoning-focused models
+evaluated, Claude-3.7-sonnet-think achieves the best performance with a DefenderBench score of
+78.40. Comparing overall results, we observe that reasoning-augmented models do not outperform
+their counterparts on cybersecurity tasks. When comparing models of different sizes, we observe
+that larger models generally perform better. For example, the 70B version of Llama 3.1 surpasses
+its 8B variant by 13.97 points, and the 3B-sized Llama 3.2 outperforms its 1B counterpart by 11.84
+points. Similarly, GPT-4.1, GPT-4.1-mini, and GPT-4.1-nano achieve scores of 63.90, 58.90, and
+47.50, respectively, reflecting a steady decline as model size decreases.
 
 ## Contributing
 
-This project welcomes contributions and suggestions.  Most contributions require you to agree to a Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us the rights to use your contribution. For details, visit https://cla.opensource.microsoft.com.
+This project welcomes contributions and suggestions from the community. We also encourage users to submit their evaluation results to our leaderboard to facilitate transparent and fair model comparisons. Most contributions require you to agree to a Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us the rights to use your contribution. For details, visit https://cla.opensource.microsoft.com.
 
 When you submit a pull request, a CLA bot will automatically determine whether you need to provide a CLA and decorate the PR appropriately (e.g., status check, comment). Simply follow the instructions provided by the bot. You will only need to do this once across all repos using our CLA.
 
