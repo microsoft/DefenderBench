@@ -1,6 +1,14 @@
-# DefenderBench
+# DefenderBench: A Toolkit for Evaluating Language Agents in Cybersecurity Environments
 
-## Installation
+<p align="center"> Chiyu Zhang, Marc-Alexandre Côté, Michael Albada, Anush Sankaran, Jack W. Stokes, </p>
+<p align="center">    Tong Wang, Amir Abdi, William Blum, Muhammad Abdul-Mageed
+
+<p align="center"> Microsoft, The University of British Columbia </p>
+
+
+We introduce DefenderBench, a practical, open-source toolkit for evaluating language agents across offense, defense, and cybersecurity knowledge-based tasks. DefenderBench includes environments for network intrusion, malicious content detection, code vulnerability analysis, and cybersecurity knowledge assessment. It is intentionally designed to be affordable and easily accessible for researchers while providing fair and rigorous assessment. We benchmark several state-of-the-art (SoTA) and popular LLMs, including both open- and closed-weight models, using a standardized agentic framework. 
+
+## Installation 
 
 First create a virtual environment and activate it:
 
