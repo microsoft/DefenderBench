@@ -1,21 +1,36 @@
 # DefenderBench: A Toolkit for Evaluating Language Agents in Cybersecurity Environments
 
-<p align="center"> Chiyu Zhang, Marc-Alexandre Côté, Michael Albada, Anush Sankaran, Jack W. Stokes, </p>
-<p align="center"> Tong Wang, Amir Abdi, William Blum, Muhammad Abdul-Mageed
-
-
-<p align="center" float="left">
-  <img src="image/Microsoft.jpg" height="70" />
-  <img src="image/ubc_logo.png" height="70" />
+<p align="center">
+  <a href="mailto:chiyuzh@mail.ubc.ca">Chiyu Zhang</a>,
+  <a href="mailto:macote@microsoft.com">Marc-Alexandre Côté</a>,
+  <a href="mailto:malbada@microsoft.com">Michael Albada</a>,
+  <a href="mailto:asankaran@microsoft.com">Anush Sankaran</a>,
+  <a href="mailto:jstokes@microsoft.com">Jack W. Stokes</a>,
 </p>
+<p align="center">
+  <a href="mailto:tong.wang@microsoft.com">Tong Wang</a>,
+  <a href="mailto:amirabdi@microsoft.com">Amir Abdi</a>,
+  <a href="mailto:william.blum@microsoft.com">William Blum</a>,
+  <a href="mailto:muhammad.mageed@ubc.ca">Muhammad Abdul-Mageed</a>
+</p>
+
+
+<p align="center">
+  <img src="image/Microsoft.jpg" height="50" />
+  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+  <img src="image/ubc_logo.png" height="50" />
+</p>
+
 
 
 <p align="center" width="100%"><a href="https://github.com/microsoft/DefenderBench" target="github">GitHub</a>, <a href="https://arxiv.org/abs/" target="github">Paper</a></p>
 
-<p align="center" width="100%">
-    <a><img src="image/overview.png" alt="Title" style="width: 90%; min-width: 300px; display: block; margin: auto;"></a>
-</p>
+
 We introduce DefenderBench, a practical, open-source toolkit for evaluating language agents across offense, defense, and cybersecurity knowledge-based tasks. DefenderBench includes environments for network intrusion, malicious content detection, code vulnerability analysis, and cybersecurity knowledge assessment. It is intentionally designed to be affordable and easily accessible for researchers while providing fair and rigorous assessment. We benchmark several state-of-the-art (SoTA) and popular LLMs, including both open- and closed-weight models, using a standardized agentic framework. 
+
+<p align="center" width="100%">
+    <a><img src="image/overview.png" alt="Title" style="width: 50%; min-width: 300px; display: block; margin: auto;"></a>
+</p>
 
 ## Installation 
 
