@@ -32,6 +32,35 @@ We introduce DefenderBench, a practical, open-source toolkit for evaluating lang
     <a><img src="image/overview.png" alt="Title" style="width: 50%; min-width: 300px; display: block; margin: auto;"></a>
 </p>
 
+- [Tasks](#Tasks)
+- [Modules](#Modules)
+- [Installation](#Installation)
+- [Usage](#Usage)
+- [Contributing](#Contributing)
+- [Trademarks](#Trademarks)
+
+## Tasks
+
+Currently, DefenderBench consists of five cybersecurity task types.
+* **Computer Network Intrusion Simulation.** We leverage the network intrusion simulation tool CyberBattleSim (CBS) (Team., 2021) to evaluate the ability of LLM agents to identify vulnerabilities in a network. CyberBattleSim is parameterized by a fixed topology and a set of node vulnerabilities that agents can exploit to move laterally within the network.
+
+* **Malicious Content Detection.**  We include two task, MALICIOUS-TEXT and MALICIOUS-WEB, for malicious content detection (Alvarado., 2024) and phishing website detection (Ariyadasa et al., 2021), respectively.
+
+* **Cyber Threat Intelligence (CTI) Multiple Choice Question Answering.** A multiple-choice question answering task that uses the CTI-MCQA dataset introduced by Alam et al. (2024).
+
+* **Code Vulnerability Detection.** We include two two datasets, VULNERABLE-CG (Lu et al., 2021) and VULNERABLE-DV (Zhou et al., 2019), for code vulnerability detection.
+
+* **Code Vulnerability Fixing.** We use the CVEFix dataset (Bhandari et al., 2021) for the vulnerability fixing task.
+
+## Modules
+DefenderBench leverages publicly accessible cybersecurity datasets and turns them into interactive environments to evaluate LLM agents. The toolkit comprises three main modules: data preprocessing, task environment, and agent interface. Additionally, we provide instructions to enable users to modify and expand each module.
+
+* **Data Preprocessing.** The DefenderBench toolkit automatically downloads the required datasets from their respective sources, shuffles the samples randomly according to a fixed random seed, and splits them into a test set and a few-shot sample pool for in-context learning. Once preprocessed, the datasets are cached locally. The data preparation of each task can be found in `src/defenderbench/{task_name}/{task_name}_data.py`.
+
+* **Task Environment.** For each task, we set up a task environment that provides task-specific instructions, defines the action space for the agent, loads the relevant datasets and constructs few-shot examples if few-shot in-context learning is being conducted. The task environment definition of each task is in `src/defenderbench/{task_name}/{task_name}_evn.py`.
+
+* **Agent Interface.** Our DefenderBench is equipped with an LLM agent interface that enables users to integrate both open- and closed-weight LLMs. Users can also seamlessly incorporate their own agentic system to perform the tasks. The agent interface can be found in `src/agents/`. 
+  
 ## Installation 
 
 First create a virtual environment and activate it:
@@ -62,7 +91,7 @@ To list all the available environments/tasks and additional settings use:
 
     python -m src.examples.run_experiment --help
 
-## Usage using a custom agent
+### Usage using a custom agent
 
 Here's a simple example of an actor-critic multi-agent architecture
 
@@ -81,6 +110,7 @@ provided by the bot. You will only need to do this once across all repos using o
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
 
 ## Trademarks
 
