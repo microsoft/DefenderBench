@@ -15,15 +15,8 @@
 </p>
 
 
-<p align="center">
-  <img src="image/Microsoft.jpg" height="50" />
-  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-  <img src="image/ubc_logo.png" height="50" />
-</p>
 
-
-
-<p align="center" width="100%"><a href="https://github.com/microsoft/DefenderBench" target="github">GitHub</a>, <a href="https://github.com/microsoft/DefenderBench" target="github">Paper</a></p>
+<p align="center" width="100%"><a href="https://github.com/microsoft/DefenderBench" target="github">Paper</a></p>
 
 
 We introduce DefenderBench, a practical, open-source toolkit for evaluating language agents across offense, defense, and cybersecurity knowledge-based tasks. DefenderBench includes environments for network intrusion, malicious content detection, code vulnerability analysis, and cybersecurity knowledge assessment. It is intentionally designed to be affordable and easily accessible for researchers while providing fair and rigorous assessment. We benchmark several state-of-the-art (SoTA) and popular LLMs, including both open- and closed-weight models, using a standardized agentic framework. 
@@ -138,9 +131,12 @@ its 8B variant by 13.97 points, and the 3B-sized Llama 3.2 outperforms its 1B co
 points. Similarly, GPT-4.1, GPT-4.1-mini, and GPT-4.1-nano achieve scores of 63.90, 58.90, and
 47.50, respectively, reflecting a steady decline as model size decreases.
 
+## Submit Your Results.
+We encourage users to submit their evaluation results to our leaderboard to facilitate transparent and fair model comparisons. 
+
 ## Contributing
 
-This project welcomes contributions and suggestions from the community. We also encourage users to submit their evaluation results to our leaderboard to facilitate transparent and fair model comparisons. Most contributions require you to agree to a Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us the rights to use your contribution. For details, visit https://cla.opensource.microsoft.com.
+This project welcomes contributions and suggestions from the community. Most contributions require you to agree to a Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us the rights to use your contribution. For details, visit https://cla.opensource.microsoft.com.
 
 When you submit a pull request, a CLA bot will automatically determine whether you need to provide a CLA and decorate the PR appropriately (e.g., status check, comment). Simply follow the instructions provided by the bot. You will only need to do this once across all repos using our CLA.
 
