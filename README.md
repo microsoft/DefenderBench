@@ -35,15 +35,15 @@ We introduce DefenderBench, a practical, open-source toolkit for evaluating lang
 ## Tasks
 
 Currently, DefenderBench consists of five cybersecurity task types.
-* **Computer Network Intrusion Simulation.** We leverage the network intrusion simulation tool CyberBattleSim (CBS) (Team., 2021) to evaluate the ability of LLM agents to identify vulnerabilities in a network. CyberBattleSim is parameterized by a fixed topology and a set of node vulnerabilities that agents can exploit to move laterally within the network.
+* **Computer Network Intrusion Simulation.** We leverage the network intrusion simulation tool CyberBattleSim (CBS) ([Team., 2021](https://github.com/microsoft/CyberBattleSim)) to evaluate the ability of LLM agents to identify vulnerabilities in a network. CyberBattleSim is parameterized by a fixed topology and a set of node vulnerabilities that agents can exploit to move laterally within the network.
 
-* **Malicious Content Detection.**  We include two task, MALICIOUS-TEXT and MALICIOUS-WEB, for malicious content detection (Alvarado., 2024) and phishing website detection (Ariyadasa et al., 2021), respectively.
+* **Malicious Content Detection.**  We include two task, MALICIOUS-TEXT and MALICIOUS-WEB, for malicious content detection ([Alvarado., 2024](https://huggingface.co/datasets/ealvaradob/phishing-dataset)) and phishing website detection ([Ariyadasa et al., 2021](https://data.mendeley.com/datasets/n96ncsr5g4/1)), respectively.
 
-* **Cyber Threat Intelligence (CTI) Multiple Choice Question Answering.** A multiple-choice question answering task that uses the CTI-MCQA dataset introduced by Alam et al. (2024).
+* **Cyber Threat Intelligence (CTI) Multiple Choice Question Answering.** A multiple-choice question answering task that uses the CTI-MCQA dataset introduced by [Alam et al. (2024)](https://arxiv.org/abs/2406.07599).
 
-* **Code Vulnerability Detection.** We include two two datasets, VULNERABLE-CG (Lu et al., 2021) and VULNERABLE-DV (Zhou et al., 2019), for code vulnerability detection.
+* **Code Vulnerability Detection.** We include two two datasets, VULNERABLE-CG ([Lu et al., 2021]([https://arxiv.org/abs/2102.04664](https://datasets-benchmarks-proceedings.neurips.cc/paper/2021/hash/c16a5320fa475530d9583c34fd356ef5-Abstract-round1.html))) and VULNERABLE-DV ([Zhou et al., 2019](https://proceedings.neurips.cc/paper/2019/hash/49265d2447bc3bbfe9e76306ce40a31f-Abstract.html)), for code vulnerability detection.
 
-* **Code Vulnerability Fixing.** We use the CVEFix dataset (Bhandari et al., 2021) for the vulnerability fixing task.
+* **Code Vulnerability Fixing.** We use the CVEFix dataset ([Bhandari et al., 2021](https://dl.acm.org/doi/10.1145/3475960.3475985)) for the vulnerability fixing task.
 
 ## Modules
 DefenderBench leverages publicly accessible cybersecurity datasets and turns them into interactive environments to evaluate LLM agents. The toolkit comprises three main modules: data preprocessing, task environment, and agent interface. Additionally, we provide instructions to enable users to modify and expand each module.
@@ -91,7 +91,7 @@ Here's a simple example of an actor-critic multi-agent architecture
     python agents/actor_critic.py
 
 ## Experiment Results
-we use a variety of LLMs as the backbone of our agent. These include (1) open-weight models (Llama 3.1 (Dubey et al., 2024), Llama 3.2, Llama 3.3, and Phi-3.5 (Abdin et al., 2024)), (2) proprietary models (GPT-3.5, GPT-4-turbo, GPT-4o, GPT-4o-mini, Claude-3.5-haiku, and Claude-3.5-sonnet, Claude-3.7-sonnet), and (3) proprietary reasoning models (o1, o1-mini, o3, o4-mini, GPT-4.1, GPT-4.1-mini, and GPT-4.1-nano, Claude-3.7-sonnet-think).
+we use a variety of LLMs as the backbone of our agent. These include (1) open-weight models (Llama 3.1 ([Dubey et al., 2024](https://arxiv.org/abs/2407.21783)), Llama 3.2, Llama 3.3, and Phi-3.5 ([Abdin et al., 2024](https://arxiv.org/abs/2404.14219))), (2) proprietary models (GPT-3.5, GPT-4-turbo, GPT-4o, GPT-4o-mini, Claude-3.5-haiku, and Claude-3.5-sonnet, Claude-3.7-sonnet), and (3) proprietary reasoning models (o1, o1-mini, o3, o4-mini, GPT-4.1, GPT-4.1-mini, and GPT-4.1-nano, Claude-3.7-sonnet-think).
 
 | Model | CyberBattleSim-Chain | CyberBattleSim-CTF | Malicious Text | Malicious Web | CTI-MCQA | Vulnerabilit-CG | Vulnerabilit-DV | CVEfix | DefenderBench score|
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
