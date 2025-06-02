@@ -16,7 +16,7 @@
 
 
 
-<p align="center" width="100%"><a href="https://github.com/microsoft/DefenderBench" target="github">Paper</a></p>
+<p align="center" width="100%"><a href="https://github.com/microsoft/DefenderBench" target="github">Paper (TBD)</a></p>
 
 
 We introduce DefenderBench, a practical, open-source toolkit for evaluating language agents across offense, defense, and cybersecurity knowledge-based tasks. DefenderBench includes environments for network intrusion, malicious content detection, code vulnerability analysis, and cybersecurity knowledge assessment. It is intentionally designed to be affordable and easily accessible for researchers while providing fair and rigorous assessment. We benchmark several state-of-the-art (SoTA) and popular LLMs, including both open- and closed-weight models, using a standardized agentic framework. 
@@ -93,7 +93,7 @@ Here's a simple example of an actor-critic multi-agent architecture
 ## Experiment Results
 we use a variety of LLMs as the backbone of our agent. These include (1) open-weight models (Llama 3.1 ([Dubey et al., 2024](https://arxiv.org/abs/2407.21783)), Llama 3.2, Llama 3.3, and Phi-3.5 ([Abdin et al., 2024](https://arxiv.org/abs/2404.14219))), (2) proprietary models (GPT-3.5, GPT-4-turbo, GPT-4o, GPT-4o-mini, Claude-3.5-haiku, and Claude-3.5-sonnet, Claude-3.7-sonnet), and (3) proprietary reasoning models (o1, o1-mini, o3, o4-mini, GPT-4.1, GPT-4.1-mini, and GPT-4.1-nano, Claude-3.7-sonnet-think).
 
-| Model | CyberBattleSim-Chain | CyberBattleSim-CTF | Malicious Text | Malicious Web | CTI-MCQA | Vulnerabilit-CG | Vulnerabilit-DV | CVEfix | DefenderBench score|
+| Model | CyberBattleSim-Chain | CyberBattleSim-CTF | Malicious Text | Malicious Web | CTI-MCQA | Vulnerabilit-CG | Vulnerabilit-DV | CVEfix |: DefenderBench score|
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 |     | winning % | winning % | Macro-F1 | Macro-F1  | Macro-F1 | Macro-F1  | Macro-F1  | CodeBLEU | DefenderBench score|
 | Naive Baseline | 19.44 | 22.22 | 52.40 | 50.40 | 25.00 | 50.00 | 47.80 | **83.24** | 43.81 |
@@ -117,7 +117,7 @@ we use a variety of LLMs as the backbone of our agent. These include (1) open-we
 | o1-mini | 50.00 | 50.00 | 80.30 | 74.40 | 37.40 | 49.60 | 48.60 | 53.70 | 60.30 |
 | o3 | 83.30 | 20.00 | 92.40 | 88.00 | 76.40 | 30.80 | **59.60** | 55.60 | 63.90 |
 | o4-mini | 66.70 | 20.00 | 92.00 | 84.60 | 70.00 | 32.20 | 57.40 | 52.40 | 50.80 |
-| Claude-3.7-sonnet-tk | **100.00** | 76.67 | 94.40 | **91.00** | **78.20** | 54.60 | 52.80 | 79.50 | 78.40 |
+| Claude-3.7-sonnet-think | **100.00** | 76.67 | 94.40 | **91.00** | **78.20** | 54.60 | 52.80 | 79.50 | 78.40 |
 
 
 **Overall Perforamce** Claude-3.7-sonnet achieves the highest DefenderBench score of 81.65 across
