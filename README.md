@@ -16,7 +16,7 @@
 
 
 
-<p align="center" width="100%"><a href="https://github.com/microsoft/DefenderBench" target="github">Paper (TBD)</a></p>
+<p align="center" width="100%"><a href="https://arxiv.org/abs/2506.00739" target="github">Paper</a></p>
 
 
 We introduce DefenderBench, a practical, open-source toolkit for evaluating language agents across offense, defense, and cybersecurity knowledge-based tasks. DefenderBench includes environments for network intrusion, malicious content detection, code vulnerability analysis, and cybersecurity knowledge assessment. It is intentionally designed to be affordable and easily accessible for researchers while providing fair and rigorous assessment. We benchmark several state-of-the-art (SoTA) and popular LLMs, including both open- and closed-weight models, using a standardized agentic framework. 
