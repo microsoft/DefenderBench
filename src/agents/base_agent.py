@@ -2,7 +2,8 @@
 import gymnasium as gym
 from tqdm import tqdm
 import wandb
-
+import json
+import os
 class BaseAgent:
     """
     BaseAgent implements the common run loop for an environment.
@@ -21,12 +22,12 @@ class BaseAgent:
         env = gym.make("defenderbench/{}-v0".format(env_name), disable_env_checker=True)
         nb_steps = env.unwrapped.nb_steps
         nb_trials = env.unwrapped.nb_trials
-
+        os.environ["WANDB_MODE"] = "offline"
         # Initialize wandb logging if requested.  
         if args.use_wandb:  
             wandb.init(project="DefenderBench", name=f"{env_name}/{args.model}",  
                         config={"LLM": args.model, "env": env_name})  
-            wandb_table = wandb.Table(columns=["Step", "Instructions", "History", "Obs", "Action", "Feedback", "Reward", "Score"])  
+            wandb_table = wandb.Table(columns=["Step", "Instructions", "History", "Obs", "Action", "Feedback", "Reward", "Score", "metrics  "])  
         else:  
             wandb_table = None  
 
@@ -66,11 +67,12 @@ class BaseAgent:
                         action,    # We log the action both as "Action" and "Feedback" for simplicity.  
                         action,  
                         reward,  
-                        info.get('score', 0)]
+                        info.get('score', 0),
+                        json.dumps(info.get('metrics', {}))]
                 wandb_table.add_data(*row)  
                 wandb.log({  
                     "episode/score": info.get('score', 0),  
-                    "episode/normalized_score": info.get('score', 0)/max_score  
+                    "episode/normalized_score": info.get('score', 0)/max_score
                 }, step=step_id+1)  
             
             # Update progress based on whether the environment reported a completed step.  
