@@ -2,7 +2,8 @@
 import gymnasium as gym
 from tqdm import tqdm
 import wandb
-
+import json
+import os
 class BaseAgent:
     """
     BaseAgent implements the common run loop for an environment.
@@ -21,12 +22,12 @@ class BaseAgent:
         env = gym.make("defenderbench/{}-v0".format(env_name), disable_env_checker=True)
         nb_steps = env.unwrapped.nb_steps
         nb_trials = env.unwrapped.nb_trials
-
+        os.environ["WANDB_MODE"] = "offline"
         # Initialize wandb logging if requested.  
         if args.use_wandb:  
-            wandb.init(project="DefenderBench", name=f"{env_name}/{args.llm_name}",  
-                        config={"LLM": args.llm_name, "env": env_name})  
-            wandb_table = wandb.Table(columns=["Step", "Instructions", "History", "Obs", "Action", "Feedback", "Reward", "Score"])  
+            wandb.init(project="DefenderBench", name=f"{env_name}/{args.model}",  
+                        config={"LLM": args.model, "env": env_name})  
+            wandb_table = wandb.Table(columns=["Step", "Instructions", "History", "Obs", "Action", "Feedback", "Reward", "Score", "metrics  "])  
         else:  
             wandb_table = None  
 
@@ -42,19 +43,19 @@ class BaseAgent:
             max_score = info.get('max_score', 1)  
             pbar.set_postfix_str(f"Score: {cur_score}/{max_score} ({(cur_score/max_score):.1%})")  
 
-            # Obtain action from the agent.  
-            action = self.act(info.get('obs', ''), info)  
+             
 
             if args.debug:  
                 from ipdb import set_trace; set_trace()  
 
             # Step the environment with the chosen action.  
             try:
+                # Obtain action from the agent.  
+                action = self.act(info.get('obs', ''), info) 
                 _, reward, done, info = env.step(action)
             except Exception as e:
                 print(f"Error stepping the environment: {e}")
                 reward = 0
-                done = True,
                 info = {"step_done": True, "score": 0, "max_score": 1}
             
             # Log information if wandb is enabled.  
@@ -66,11 +67,12 @@ class BaseAgent:
                         action,    # We log the action both as "Action" and "Feedback" for simplicity.  
                         action,  
                         reward,  
-                        info.get('score', 0)]
+                        info.get('score', 0),
+                        json.dumps(info.get('metrics', {}))]
                 wandb_table.add_data(*row)  
                 wandb.log({  
                     "episode/score": info.get('score', 0),  
-                    "episode/normalized_score": info.get('score', 0)/max_score  
+                    "episode/normalized_score": info.get('score', 0)/max_score
                 }, step=step_id+1)  
             
             # Update progress based on whether the environment reported a completed step.  
