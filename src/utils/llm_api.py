@@ -65,7 +65,7 @@ class LLM:
     def __call__(self, message, *args, **kwargs):
         # Trim message content to context length
         for i, m in enumerate(message):
-            message[i]["content"] = message[i]["content"][:self.context_length]
+            message[i]["content"] = message[i]["content"]
 
         if self.verbose:
             # Message is a list of dictionaries with role and content keys.
