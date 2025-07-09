@@ -55,7 +55,7 @@ class ReActAgent(BaseAgent):
             try:  
                 response = self.model(messages)  
             except Exception as e:  
-                continue  
+                raise e  
             
             # Append the new response to our chain-of-thought.  
             chain_of_thought += f"\nAssistant: {response}"  

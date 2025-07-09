@@ -6,7 +6,7 @@ import yaml
 from openai import AzureOpenAI
 from openai import OpenAI
 from termcolor import colored
-
+import openai
 from azure.identity import DefaultAzureCredential, get_bearer_token_provider
 
 
@@ -65,7 +65,7 @@ class LLM:
     def __call__(self, message, *args, **kwargs):
         # Trim message content to context length
         for i, m in enumerate(message):
-            message[i]["content"] = message[i]["content"][:self.context_length]
+            message[i]["content"] = message[i]["content"]
 
         if self.verbose:
             # Message is a list of dictionaries with role and content keys.
@@ -90,7 +90,9 @@ class LLM:
                 else:
                     return_response = self.client.chat.completions.create(model = self.model_name, messages = message).choices[0].message.content
                 break
-
+            except openai.BadRequestError as exception:
+                print(colored(f"BadRequestError: {exception}", "red"))
+                raise exception
             except Exception as e:
                 print(colored(f"Error: {e}", "red"))
                 self.error_count += 1
